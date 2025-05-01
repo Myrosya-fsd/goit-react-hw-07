@@ -38,15 +38,3 @@ export const addContact = createAsyncThunk(
     }
   }
 );
-
-export const editContact = createAsyncThunk(
-  "contacts/editContact",
-  async (body, { rejectWithValue }) => {
-    try {
-      const response = await axios.put(`/contacts/${body.id}`, body);
-      return response.data;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  }
-);

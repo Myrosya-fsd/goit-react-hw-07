@@ -1,10 +1,5 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
-import {
-  addContact,
-  deleteContact,
-  fetchContacts,
-  editContact,
-} from "./contactsOps";
+import { addContact, deleteContact, fetchContacts } from "./contactsOps";
 
 const initialState = {
   items: [],
@@ -31,14 +26,8 @@ const contactsSlice = createSlice({
       .addCase(fetchContacts.fulfilled, (state, action) => {
         state.items = action.payload;
       })
-      .addCase(editContact.fulfilled, (state, action) => {
-        state.items = state.items.map((item) =>
-          item.id === action.payload.id ? action.payload : item
-        );
-      })
       .addMatcher(
         isAnyOf(
-          editContact.rejected,
           addContact.rejected,
           deleteContact.rejected,
           fetchContacts.rejected
@@ -49,7 +38,6 @@ const contactsSlice = createSlice({
       )
       .addMatcher(
         isAnyOf(
-          editContact.pending,
           addContact.pending,
           deleteContact.pending,
           fetchContacts.pending
@@ -61,7 +49,6 @@ const contactsSlice = createSlice({
       )
       .addMatcher(
         isAnyOf(
-          editContact.fulfilled,
           addContact.fulfilled,
           deleteContact.fulfilled,
           fetchContacts.fulfilled
