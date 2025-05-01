@@ -1,11 +1,10 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
-//import { nanoid } from "nanoid";
 import {
-  addContactThunk,
-  deleteContactThunk,
-  fetchDataThunk,
+  addContact,
+  deleteContact,
+  fetchContacts,
   editContact,
-} from "./operations";
+} from "./contactsOps";
 
 const initialState = {
   items: [],
@@ -23,13 +22,13 @@ const contactsSlice = createSlice({
   extraReducers: (builder) => {
     builder
 
-      .addCase(deleteContactThunk.fulfilled, (state, action) => {
+      .addCase(deleteContact.fulfilled, (state, action) => {
         state.items = state.items.filter((item) => item.id !== action.payload);
       })
-      .addCase(addContactThunk.fulfilled, (state, action) => {
+      .addCase(addContact.fulfilled, (state, action) => {
         state.items.push(action.payload);
       })
-      .addCase(fetchDataThunk.fulfilled, (state, action) => {
+      .addCase(fetchContacts.fulfilled, (state, action) => {
         state.items = action.payload;
       })
       .addCase(editContact.fulfilled, (state, action) => {
@@ -40,9 +39,9 @@ const contactsSlice = createSlice({
       .addMatcher(
         isAnyOf(
           editContact.rejected,
-          addContactThunk.rejected,
-          deleteContactThunk.rejected,
-          fetchDataThunk.rejected
+          addContact.rejected,
+          deleteContact.rejected,
+          fetchContacts.rejected
         ),
         (state, action) => {
           state.error = action.payload;
@@ -51,9 +50,9 @@ const contactsSlice = createSlice({
       .addMatcher(
         isAnyOf(
           editContact.pending,
-          addContactThunk.pending,
-          deleteContactThunk.pending,
-          fetchDataThunk.pending
+          addContact.pending,
+          deleteContact.pending,
+          fetchContacts.pending
         ),
         (state) => {
           state.error = null;
@@ -63,9 +62,9 @@ const contactsSlice = createSlice({
       .addMatcher(
         isAnyOf(
           editContact.fulfilled,
-          addContactThunk.fulfilled,
-          deleteContactThunk.fulfilled,
-          fetchDataThunk.fulfilled
+          addContact.fulfilled,
+          deleteContact.fulfilled,
+          fetchContacts.fulfilled
         ),
         (state) => {
           state.isLoading = false;

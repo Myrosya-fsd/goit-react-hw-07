@@ -7,6 +7,7 @@
   padding: 20px;
   margin-bottom: 24px;
   width: 350px;
+  background-color: #eddbbe;
 }
 
 .form:hover {
@@ -35,7 +36,8 @@
 
 .button {
   padding: 6px 0;
-  background-color: rgb(51, 48, 48);
+
+  background-color: rgb(179, 153, 187);
   color: white;
   border: none;
   border-radius: 6px;
@@ -45,12 +47,12 @@
 }
 
 .button:hover {
-  background-color: rgb(212, 44, 58);
+  background-color: rgb(147, 96, 147);
   color: white;
 }
 
 .error {
-  color: red;
+  color: rgb(150, 91, 150);
   font-size: 0.9em;
   margin-top: 4px;
 }

@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { deleteContactThunk } from "../../redux/operations";
+import { deleteContact } from "../../redux/contactsOps";
 import { FaUser, FaPhoneAlt } from "react-icons/fa";
 import styles from "./Contact.module.css";
 
@@ -7,7 +7,7 @@ const Contact = ({ contact }) => {
   const dispatch = useDispatch();
 
   const handleDelete = () => {
-    dispatch(deleteContactThunk(contact.id));
+    dispatch(deleteContact(contact.id));
   };
 
   return (

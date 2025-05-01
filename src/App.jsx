@@ -4,16 +4,16 @@ import ContactList from "./components/ContactList/ContactList";
 import SearchBox from "./components/SearchBox/SearchBox";
 import ContactForm from "./components/ContactForm/ContactForm";
 import { useEffect } from "react";
-import { fetchDataThunk } from "./redux/operations";
+import { fetchContacts } from "./redux/contactsOps";
 import styles from "./App.module.css";
 import { selectContacts } from "./redux/contactsSlice";
-import { addContactThunk, deleteContactThunk } from "./redux/operations";
+import { addContact, deleteContact } from "./redux/contactsOps";
 import { selectNameFilter, changeFilter } from "./redux/filtersSlice";
 
 const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchDataThunk());
+    dispatch(fetchContacts());
   }, [dispatch]);
 
   const contacts = useSelector(selectContacts);
@@ -24,11 +24,11 @@ const App = () => {
   );
 
   const handleAddContact = (name, number) => {
-    dispatch(addContactThunk({ name, number }));
+    dispatch(addContact({ name, number }));
   };
 
   const handleDeleteContact = (id) => {
-    dispatch(deleteContactThunk(id));
+    dispatch(deleteContact(id));
   };
 
   const handleChangeFilter = (filter) => {

@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { addContactThunk } from "../../redux/operations";
+import { addContact } from "../../redux/contactsOps";
 import styles from "./ContactForm.module.css";
 
 const ContactForm = () => {
@@ -14,14 +14,13 @@ const ContactForm = () => {
       .min(3, "Minimum 3 characters")
       .max(50, "Maximum 50 characters"),
     number: Yup.string()
-      .matches(/^\d{3}-\d{2}-\d{2}$/, "Invalid phone format (e.g., 227-99-26)")
       .required("Phone number is required")
       .min(3, "Minimum 3 characters")
       .max(50, "Maximum 50 characters"),
   });
 
   const handleSubmit = (values, { resetForm }) => {
-    dispatch(addContactThunk({ name: values.name, number: values.number }));
+    dispatch(addContact({ name: values.name, number: values.number }));
     resetForm();
   };
 
