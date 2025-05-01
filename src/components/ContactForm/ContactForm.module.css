@@ -1,0 +1,56 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+  width: 350px;
+}
+
+.form:hover {
+  border: 2px solid rgb(179, 153, 187);
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+}
+
+.input:hover {
+  border: 2px solid rgb(179, 153, 187);
+}
+
+.input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 4px;
+  width: 310px;
+  height: 40px;
+  margin-bottom: 15px;
+}
+
+.button {
+  padding: 6px 0;
+  background-color: rgb(51, 48, 48);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 150px;
+  margin: 0 auto;
+}
+
+.button:hover {
+  background-color: rgb(212, 44, 58);
+  color: white;
+}
+
+.error {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 4px;
+}

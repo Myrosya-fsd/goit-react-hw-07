@@ -1,0 +1,44 @@
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  width: 302px;
+}
+
+.item:hover {
+  border: 2px solid rgb(179, 153, 187);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-right: 20px;
+}
+
+.icon {
+  margin-right: 8px;
+  color: #555;
+}
+
+.button {
+  padding: 6px 15px;
+  background-color: rgb(51, 48, 48);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.button:hover {
+  background-color: rgb(212, 44, 58);
+}
+
+.item {
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
