@@ -6,6 +6,10 @@
   padding: 20px;
 }
 
+.searchBox:hover {
+  border: 2px solid rgb(179, 153, 187);
+}
+
 .label {
   font-weight: bold;
   display: flex;
