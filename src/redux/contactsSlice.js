@@ -1,18 +1,17 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import { addContact, deleteContact, fetchContacts } from "./contactsOps";
+import { createSelector } from "reselect";
 
 const initialState = {
   items: [],
-  loading: false,
+  isLoading: false,
   error: null,
 };
 
 const contactsSlice = createSlice({
   name: "contacts",
   initialState,
-  reducers: {
-    setFavorites: () => {}, // залишено як заглушку
-  },
+  reducers: {},
 
   extraReducers: (builder) => {
     builder
@@ -65,4 +64,12 @@ export const selectLoading = (state) => state.contacts.isLoading;
 export const selectError = (state) => state.contacts.error;
 export const selectContacts = (state) => state.contacts.items;
 
-export default contactsSlice.reducer; // Експорти:
+export const selectFilteredContacts = createSelector(
+  [selectContacts, (state) => state.filters.name],
+  (contacts, filter) => {
+    return contacts.filter((contact) =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
+    );
+  }
+);
+export default contactsSlice.reducer;
